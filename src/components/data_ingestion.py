@@ -9,6 +9,7 @@ from src.database.mongo import get_client
 from src.entities.artifact_entity import DataIngestionOutput
 from src.components.data_validation import DataValidation
 from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainer
 
 general_config = GeneralConfig()
 
@@ -109,8 +110,11 @@ if __name__ == "__main__":
     """)
     
     transform = DataTransformation()
-    transform.run_transformation(output=validation_output)
+    transform_output = transform.run_transformation(output=validation_output)
     
-
-        
+    trainer = ModelTrainer(transform_output)
+    trainer_output = trainer.train_model()  
+    
+    print(trainer_output.train_classification_metrics)  
+    print(trainer_output.test_classification_metrics)
         

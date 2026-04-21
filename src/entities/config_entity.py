@@ -90,3 +90,11 @@ class DataTransformationConfig:
         self.transformed_train_file_path = self.data_transformation_dir / self.transformed_train_file_name
         self.transformed_test_file_path = self.data_transformation_dir / self.transformed_test_file_name
         self.preprocessor_path = self.data_transformation_dir / const.PREPROCESSOR_OBJECT_NAME
+        
+class ModelTrainerConfig:
+    def __init__(self, config: GeneralConfig):
+        self.model_trainer_dir = (config.artifact_dir_path / const.MODEL_TRAINING_DIR)
+        self.model_trainer_dir.mkdir(parents=True, exist_ok=True)
+        
+        self.model_object_path = (self.model_trainer_dir / const.TRAINED_MODEL_OBJECT_NAME)
+        self.expected_score = const.MODEL_EXPECTED_SCORE 

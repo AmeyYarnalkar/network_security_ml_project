@@ -4,6 +4,8 @@ import sys
 import pickle
 import yaml
 import numpy as np
+from sklearn.metrics import f1_score, precision_score, recall_score
+from src.entities.artifact_entity import ClassificationMetric
 
 
 def read_yaml(file_path):
@@ -85,3 +87,39 @@ def save_np_array(array, file_path):
     except Exception as e:
         logging.error("Error while saving numpy array")
         raise CustomException(e, sys)
+   
+    
+def load_np_array(file_path):
+    try:
+        logging.info(f"Loading numpy array from: {file_path}")
+
+        with open(file_path, "rb") as f:
+            array = np.load(f)
+
+        logging.info("Numpy array loaded successfully")
+        return array
+
+    except Exception as e:
+        logging.error("Error while loading numpy array")
+        raise CustomException(e, sys)
+    
+
+# function to get the classification report
+def get_classification_report(y_true, y_pred) ->  ClassificationMetric:
+    try:
+        model_f1_score = f1_score(y_true=y_true, y_pred=y_pred)
+        model_precision_score = precision_score(y_true, y_pred)
+        model_recall_score = recall_score(y_true, y_pred)
+        
+        report = ClassificationMetric(
+            f1_score = model_f1_score,
+            precision = model_precision_score,
+            recall= model_recall_score
+        )
+        
+        logging.info("Classification report done successfully")
+        return report
+        
+    except Exception as e:
+        logging.error("Error while Calculating Classification report")
+        raise CustomException(e,sys)

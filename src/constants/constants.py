@@ -26,7 +26,7 @@ FILE_NAME:str = "network_data.csv"
 TRAIN_FILE_NAME:str = "train.csv"
 TEST_FILE_NAME:str = "test.csv"
 
-"Data Validation Constants"
+"""Data Validation Constants"""
 
 DATA_VALIDATION_DIR:str = "data_validation"
 VALID_DATA_DIR:str = "valid"
@@ -38,9 +38,15 @@ INVALID_TEST_FILE_NAME:str = "invalid_test.csv"
 DATA_DRIFT_DIR:str = "drift"
 DRIFT_FILE_NAME:str = "drift_report.yaml"
 
-"Data Transformation Constants"
+"""Data Transformation Constants"""
 
 DATA_TRANSFORMATION_DIR:str = "data_transformation"
 TRANSFORMED_TRAIN_FILE_NAME = "transformed_train.csv"
 TRANSFORMED_TEST_FILE_NAME = "transformed_test.csv"
 PREPROCESSOR_OBJECT_NAME = "preprocessor.pkl"
+
+""" Model Training Constants"""
+
+MODEL_TRAINING_DIR:str = "model_trainer"
+TRAINED_MODEL_OBJECT_NAME:str = "model.pkl"
+MODEL_EXPECTED_SCORE:float = 0.6
