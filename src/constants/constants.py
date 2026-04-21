@@ -38,3 +38,9 @@ INVALID_TEST_FILE_NAME:str = "invalid_test.csv"
 DATA_DRIFT_DIR:str = "drift"
 DRIFT_FILE_NAME:str = "drift_report.yaml"
 
+"Data Transformation Constants"
+
+DATA_TRANSFORMATION_DIR:str = "data_transformation"
+TRANSFORMED_TRAIN_FILE_NAME = "transformed_train.csv"
+TRANSFORMED_TEST_FILE_NAME = "transformed_test.csv"
+PREPROCESSOR_OBJECT_NAME = "preprocessor.pkl"

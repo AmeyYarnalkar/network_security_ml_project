@@ -77,3 +77,16 @@ class DataValidationConfig(): # inherited because we need ingested data paths
         self.invalid_test_file_path = self.invalid_data_dir / self.invalid_test_file_name
         
         self.drift_file_path = self.drift_dir / self.drift_file_name
+        
+        
+class DataTransformationConfig:
+    def __init__(self, config: GeneralConfig):
+        self.data_transformation_dir = config.artifact_dir_path / const.DATA_TRANSFORMATION_DIR
+        self.data_transformation_dir.mkdir(parents=True, exist_ok=True)
+        
+        self.transformed_train_file_name = const.TRANSFORMED_TRAIN_FILE_NAME.replace("csv","npy")
+        self.transformed_test_file_name = const.TRANSFORMED_TEST_FILE_NAME.replace("csv","npy")
+        
+        self.transformed_train_file_path = self.data_transformation_dir / self.transformed_train_file_name
+        self.transformed_test_file_path = self.data_transformation_dir / self.transformed_test_file_name
+        self.preprocessor_path = self.data_transformation_dir / const.PREPROCESSOR_OBJECT_NAME

@@ -18,10 +18,6 @@ class ETLPipeline:
         try:
             df = pd.read_csv(file_path)
 
-            # basic cleaning (optional but good)
-            df.columns = [col.lower() for col in df.columns]
-            df.drop_duplicates(inplace=True)
-
             # The line `records = df.to_dict(orient="records")` is converting the DataFrame `df` into
             # a list of dictionaries where each dictionary represents a row in the DataFrame.
             records = df.to_dict(orient="records")

@@ -13,3 +13,9 @@ class DataValidationOutput:
     invalid_train_file_path:str
     invalid_test_file_path:str
     drift_report_file_path:str
+    
+@dataclass
+class DataTransformationOutput:
+    train_path:str
+    test_path:str
+    preprocessor_path:str

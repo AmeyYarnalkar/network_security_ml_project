@@ -8,6 +8,7 @@ from src.entities.config_entity import DataIngestionConfig, GeneralConfig
 from src.database.mongo import get_client
 from src.entities.artifact_entity import DataIngestionOutput
 from src.components.data_validation import DataValidation
+from src.components.data_transformation import DataTransformation
 
 general_config = GeneralConfig()
 
@@ -106,6 +107,10 @@ if __name__ == "__main__":
     Invalid Test Path      : {validation_output.invalid_test_file_path}
     ===========================================
     """)
+    
+    transform = DataTransformation()
+    transform.run_transformation(output=validation_output)
+    
 
         
         
