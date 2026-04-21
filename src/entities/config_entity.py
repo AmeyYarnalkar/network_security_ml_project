@@ -44,3 +44,36 @@ class DataIngestionConfig:
         self.split_ratio = const.TRAIN_AND_TEST_SPLIT_RATIO
         self.database_name = const.DATABASE_NAME
         self.collection_name = const.COLLECTION_NAME
+        
+class DataValidationConfig(): # inherited because we need ingested data paths
+    def __init__(self, config: GeneralConfig):
+        #root
+        self.data_validation_dir = config.artifact_dir_path / const.DATA_VALIDATION_DIR
+        self.data_validation_dir.mkdir(parents=True, exist_ok=True)
+        
+        #sub directories
+        self.valid_data_dir = (self.data_validation_dir / const.VALID_DATA_DIR)
+        self.valid_data_dir.mkdir(parents=True, exist_ok=True)
+        
+        self.invalid_data_dir = (self.data_validation_dir / const.INVALID_DATA_DIR)
+        self.invalid_data_dir.mkdir(parents=True, exist_ok=True)
+        
+        self.drift_dir = (self.data_validation_dir / const.DATA_DRIFT_DIR)
+        self.drift_dir.mkdir(parents=True, exist_ok=True)
+        
+        #file names
+        self.valid_train_file_name = const.VALID_TRAIN_FILE_NAME
+        self.valid_test_file_name = const.VALID_TEST_FILE_NAME 
+        self.drift_file_name = const.DRIFT_FILE_NAME
+        
+        self.invalid_train_file_name = const.INVALID_TRAIN_FILE_NAME
+        self.invalid_test_file_name = const.INVALID_TEST_FILE_NAME  
+        
+        #full paths
+        self.valid_train_file_path = self.valid_data_dir / self.valid_train_file_name
+        self.valid_test_file_path = self.valid_data_dir / self.valid_test_file_name
+        
+        self.invalid_train_file_path = self.invalid_data_dir / self.invalid_train_file_name
+        self.invalid_test_file_path = self.invalid_data_dir / self.invalid_test_file_name
+        
+        self.drift_file_path = self.drift_dir / self.drift_file_name

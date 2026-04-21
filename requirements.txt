@@ -3,11 +3,13 @@ pandas
 scikit-learn
 matplotlib
 seaborn
+scipy
 pymongo
+pymongo[srv]
 python-dotenv
 jupyter
 ipykernel
 certifi
-pymongo[srv]
+PyYAML
 
 -e .

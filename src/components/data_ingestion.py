@@ -7,6 +7,7 @@ from src.logging.logger_module import logging
 from src.entities.config_entity import DataIngestionConfig, GeneralConfig
 from src.database.mongo import get_client
 from src.entities.artifact_entity import DataIngestionOutput
+from src.components.data_validation import DataValidation
 
 general_config = GeneralConfig()
 
@@ -76,9 +77,10 @@ class DataIngestion:
 
             self.split_data()
 
-            data_ingestion_output = DataIngestionOutput()
-            data_ingestion_output.train_path = self.config.training_file_path,
-            data_ingestion_output.test_path = self.config.test_file_path
+            data_ingestion_output = DataIngestionOutput(
+                train_path=self.config.training_file_path,
+                test_path=self.config.test_file_path
+            )
 
             logging.info("Data ingestion pipeline completed successfully")
 
@@ -91,7 +93,19 @@ class DataIngestion:
 if __name__ == "__main__":
     obj = DataIngestion()
     output = obj.run_data_ingestion()
+    validator = DataValidation(output)
+    validation_output = validator.run_data_validation()
+    print(f"""
+    ========== DATA VALIDATION OUTPUT ==========
+    Validation Status      : {validation_output.validation_status}
 
+    Valid Train Path       : {validation_output.valid_train_file_path}
+    Valid Test Path        : {validation_output.valid_test_file_path}
+
+    Invalid Train Path     : {validation_output.invalid_train_file_path}
+    Invalid Test Path      : {validation_output.invalid_test_file_path}
+    ===========================================
+    """)
 
         
         
