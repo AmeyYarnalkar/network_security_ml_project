@@ -11,5 +11,13 @@ jupyter
 ipykernel
 certifi
 PyYAML
+mlflow
+dagshub
+flask
+urllib3
+ipaddress
+python-whois
+bs4
+gunicorn
 
 -e .
