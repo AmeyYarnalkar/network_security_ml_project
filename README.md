@@ -165,5 +165,5 @@ docker run -p 8080:8080 phishing-detector
 ---
 
 Built as a practical ML + deployment project with a focus on clean structure and real-world workflow. \
-Live Demo:  https://phishing-detector-2409388196.asia-south1.run.app
+Live Demo:  https://phishing-detector-2409388196.asia-south1.run.app \
 Docker Image: https://hub.docker.com/r/yarnalkaramey/phishing-detector
